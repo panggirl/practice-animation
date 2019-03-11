@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+     android:shareInterpolator="true"
+     android:interpolator="@android:anim/linear_interpolator"
+     android:duration="1000">
+    <rotate android:pivotY="50%"
+            android:pivotX="50%"
+            android:fromDegrees="0"
+            android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+            android:repeatMode="restart"
+            android:repeatCount="infinite"
+            android:toDegrees="360"/>
+</set>
+<!--shareInterpolator 表示集合中的动画是否和集合共享同一个插值器，如果集合不指定插值器，那子动画就需要指定或使用默认插值器。
+  该值为 true 时统一使用集合的插值器 不管子动画是否设置了插值器，如上 该值就为 true 同时子动画也设置了插值器但结果子动画会使用
+   集合差值器-->

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/translateBt"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/scaleBt"
+            android:text="平移"
+            android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/scaleBt"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/translateBt"
+            app:layout_constraintRight_toLeftOf="@id/rotateBt"
+            android:text="缩放"
+            android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/rotateBt"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/scaleBt"
+            app:layout_constraintRight_toLeftOf="@id/alphaBt"
+            android:text="旋转"
+            android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/alphaBt"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/rotateBt"
+            app:layout_constraintRight_toLeftOf="@id/setBt"
+            android:text="透明度"
+            android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/setBt"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/alphaBt"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="组合 set"
+            android:layout_height="wrap_content"/>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/targetV"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/translateBt"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/colorAccent"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
