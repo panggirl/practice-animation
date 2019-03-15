@@ -13,5 +13,9 @@ class MainActivity : AppCompatActivity() {
         view_animal.setOnClickListener {
             startActivity(Intent(this,ViewAnimationActivity::class.java))
         }
+
+        test.setOnClickListener {
+            startActivity(Intent(this,TestActivity::class.java))
+        }
     }
 }

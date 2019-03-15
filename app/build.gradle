@@ -32,10 +32,16 @@ android {
     }
     buildTypes {
         debug {
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "String", "BASE_URL", "\"http://debug.com:8080\""
             signingConfig signingConfigs.config
             applicationIdSuffix ".debug"
         }
         release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "String", "BASE_URL", "\"http://relase.com:8080\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
@@ -49,6 +55,8 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+
+    /*在 Flavors 的不同渠道中可以定制各自的有关 defaultConfig 变量值：applicationId 、versionName*/
     productFlavors {
         baidu {}
         yingyongbao {}
