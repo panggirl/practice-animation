@@ -3,23 +3,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
-def keyStorePropertiesFile = rootProject.file("keystore.properties")
-def keyStoreProperties = new Properties()
-keyStoreProperties.load(new FileInputStream(keyStorePropertiesFile))
-
-def buildTime() {
-    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
-}
 
 android {
-    signingConfigs {
-        config {
-            storeFile file(keyStoreProperties['storeFile'])
-            keyAlias keyStoreProperties['keyAlias']
-            keyPassword keyStoreProperties['keyPassword']
-            storePassword keyStoreProperties['storePassword']
-        }
-    }
+
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.dabo.practiceanimation"
@@ -28,66 +15,14 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        flavorDimensions "versionCode"
-    }
-    buildTypes {
-        debug {
-            // 显示Log
-            buildConfigField "boolean", "LOG_DEBUG", "true"
-            buildConfigField "String", "BASE_URL", "\"http://debug.com:8080\""
-            signingConfig signingConfigs.config
-            applicationIdSuffix ".debug"
-        }
-        release {
-            // 不显示Log
-            buildConfigField "boolean", "LOG_DEBUG", "false"
-            buildConfigField "String", "BASE_URL", "\"http://relase.com:8080\""
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
-            applicationIdSuffix ".release"
-        }
-    }
-
-
-
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
-    }
-
-    /*在 Flavors 的不同渠道中可以定制各自的有关 defaultConfig 变量值：applicationId 、versionName*/
-    productFlavors {
-        baidu {}
-        yingyongbao {}
-        huawei {}
-    }
-
-    productFlavors.all { flavor ->
-        flavor.manifestPlaceholders = [FLAVOR_CHANNEL: name]
 
     }
 
-    applicationVariants.all { variant ->
-        variant.outputs.all { output ->
-            def outputFile = output.outputFile
-            if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                // 文件名修改
-                def fileName = "../../../../../../app-${defaultConfig.versionName}-${variant.flavorName}-${buildType.name}-${buildTime()}.apk"
-
-                outputFileName = new File(fileName)
-
-            }
-            println(">>>>>>>>>>>>>>>>>>        " + output.outputFile)
-        }
-
-    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$supportLibraryVersion"
-//    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }

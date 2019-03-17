@@ -11,11 +11,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         view_animal.setOnClickListener {
-            startActivity(Intent(this,ViewAnimationActivity::class.java))
+            startActivity(Intent(this, ViewAnimationActivity::class.java))
         }
 
-        test.setOnClickListener {
-            startActivity(Intent(this,TestActivity::class.java))
-        }
     }
 }
